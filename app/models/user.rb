@@ -61,6 +61,8 @@ class User < ActiveRecord::Base
     end
 
     # Tell front end if the user has been created or updated
+      puts "test"
+      puts result[:created]
     result[:created] = true if options[:created]
 
     result
