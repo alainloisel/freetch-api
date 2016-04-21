@@ -5,8 +5,10 @@ gem 'rails', '4.0.0'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
-  gem 'sqlite3', '1.3.8'
+  gem 'sqlite3'
   gem 'rails_layout'
+# gem 'therubyracer', platforms: :ruby
+
 end
 
 group :test do
@@ -21,7 +23,7 @@ group :production, :staging do
 end
 
 gem 'pubnub'
-gem 'pg', '0.15.1'
+gem 'pg'
 gem 'mixpanel-ruby'
 gem 'bootstrap-sass'
 gem 'database_cleaner'
@@ -51,7 +53,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

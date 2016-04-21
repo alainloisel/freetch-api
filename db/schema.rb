@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20140529022451) do
     t.integer  "credits",                  default: 0
     t.string   "address"
     t.string   "zipcode"
+    t.string   "gender"
     t.string   "phone"
   end
 

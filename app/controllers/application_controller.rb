@@ -13,10 +13,12 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user=(user)
+        puts "test " 
     @current_user = user
   end
 
   def current_user
+        puts "test" 
     if params[:auth_token]
       @current_user ||= User.find_by(token: params[:auth_token])
     elsif session[:token]
@@ -25,10 +27,12 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
+        puts "test" 
     !current_user.nil?
   end
 
   def logged_in_user
+        puts "test" 
     unless logged_in?
       head status: 401
     end

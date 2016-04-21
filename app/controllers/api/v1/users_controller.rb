@@ -4,13 +4,16 @@ class API::V1::UsersController < ApplicationController
 
   def show
     # identify user from received parameters
+    puts "test" 
     @user = User.find_by(:token => params[:auth_token])
     options = {}
 
     if @user
       if @user.customer?
+            puts "test" 
         options[:card] = true
       end
+          puts "test2" 
       render json: @user.as_resource(options)
     else
       render json: { error: "User was not found" }
@@ -18,12 +21,14 @@ class API::V1::UsersController < ApplicationController
   end
 
   def create
+    puts "test" 
     @user = User.find_by(facebook_id: params[:facebook_id])
     # if we already have the user, we are just doing an update
     if @user
       params[:card] = true
       update and return
     else
+      puts "here"
       @user = User.new do |user|
         user.first_name = params[:first_name]
         user.last_name = params[:last_name]
@@ -48,6 +53,8 @@ class API::V1::UsersController < ApplicationController
   # Action always trigerred by the create action when the user already exists
   # @user defined in create action
   def update
+        puts "testupdate" 
+        
     @user ||= User.find(params[:id])
 
     facebook_token = params[:token]
