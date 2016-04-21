@@ -91,7 +91,7 @@ class User < ActiveRecord::Base
 
   def alert_signup
     return if Rails.env == "staging"
-    Alert.signup(self)
+    #Alert.signup(self)
   end
 
   # register the user device token at Urban Airship
