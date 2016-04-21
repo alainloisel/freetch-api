@@ -113,9 +113,9 @@ class Sweetch < ActiveRecord::Base
   def publish_match
 		# then trigger match found
     if self.matched_with == self.parker
-      NotificationHelper.publish_match_parker(self)
+      #NotificationHelper.publish_match_parker(self)
     elsif self.matched_with == self.leaver
-      NotificationHelper.publish_match_leaver(self)
+      #NotificationHelper.publish_match_leaver(self)
     end
   end
 
