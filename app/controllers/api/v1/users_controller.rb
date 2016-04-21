@@ -43,7 +43,7 @@ class API::V1::UsersController < ApplicationController
     end
 
     if @user.save
-      puts "there"
+      puts "save"
       puts user
       puts user.show
       render json: { user: @user.as_resource(created: true) }

@@ -7,13 +7,13 @@ class User < ActiveRecord::Base
   has_many :feedbacks, through: :feedback_associations
   has_many :locations
 
-	validates :token, presence: true
-	validates :first_name,  presence: true, length: { maximum: 50 }
-	validates :last_name,  presence: true, length: { maximum: 50 }
-	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-	validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
-                      uniqueness: { case_sensitive: false }
-  validates :credits, :numericality => { :greater_than_or_equal_to => 0 }
+#	validates :token, presence: true
+#	validates :first_name,  presence: true, length: { maximum: 50 }
+#	validates :last_name,  presence: true, length: { maximum: 50 }
+#	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+#	validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
+ #                     uniqueness: { case_sensitive: false }
+  #validates :credits, :numericality => { :greater_than_or_equal_to => 0 }
 
   # Create stripe customer
   # before_save :track_card_given, if: :card_token_exists?
@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   # after_save :register_device, if: :register_for_notifications
 
   def as_resource(options = {})
+    puts "as_resource"
     result = {
       id: self.id,
       facebook_id: self.facebook_id,
@@ -61,7 +62,7 @@ class User < ActiveRecord::Base
     end
 
     # Tell front end if the user has been created or updated
-      puts "test"
+      puts "frot"
       puts result[:created]
     result[:created] = true if options[:created]
 
