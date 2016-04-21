@@ -17,12 +17,12 @@ class User < ActiveRecord::Base
 
   # Create stripe customer
   # before_save :track_card_given, if: :card_token_exists?
-  before_save :create_stripe_customer, if: :card_token_exists?
+  # before_save :create_stripe_customer, if: :card_token_exists?
   after_create :alert_signup
 
   # Update device token in Urban Airship if it changes
   # Device token changes when the iOS app changes from development to release
-  after_save :register_device, if: :register_for_notifications
+  # after_save :register_device, if: :register_for_notifications
 
   def as_resource(options = {})
     result = {
@@ -37,6 +37,9 @@ class User < ActiveRecord::Base
       credits: self.credits
     }
 
+    puts "yrtrt"
+    puts result
+  puts 
     if self.phone
       result[:phone] = self.phone
     end
