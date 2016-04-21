@@ -44,8 +44,6 @@ class API::V1::UsersController < ApplicationController
 
     if @user.save
       puts "save"
-      puts user
-      puts user.show
       render json: { user: @user.as_resource(created: true) }
     else
       puts "error"
