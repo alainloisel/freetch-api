@@ -120,19 +120,21 @@ class Sweetch < ActiveRecord::Base
   end
 
   def publish_validation
-    NotificationHelper.publish_validation(self)
+    #NotificationHelper.publish_validation(self)
   end
 
   def publish_fail
-    NotificationHelper.publish_fail(self)
+    #NotificationHelper.publish_fail(self)
   end
 
 	def schedule_not_found_notification
-		NotificationHelper.schedule_publish_not_found(self.requested_by, self)
+		#NotificationHelper.schedule_publish_not_found(self.requested_by, self)
+	  puts " sched not found"
 	end
 
 	def delete_scheduled_push
-		NotificationHelper.delete_scheduled_push(self)
+		#NotificationHelper.delete_scheduled_push(self)
+	puts " delsched "
 	end
 
   def initial_location
