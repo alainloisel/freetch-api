@@ -46,16 +46,16 @@ class Sweetch < ActiveRecord::Base
 
     # Actions triggered by the state transitions
     # Notify leaver with parker info
-    after_transition :pending => :in_progress, :do => [:delete_scheduled_push, :publish_match, :track_sweetch_in_progress]
+    after_transition :pending => :in_progress, :do => [:delete_scheduled_push, :publish_match]
 
     # Notify parker that Sweetch has been validated
-    after_transition :in_progress => :validated, :do => [:publish_validation, :charge_and_update_credits, :track_sweetch_validated]
+    after_transition :in_progress => :validated, :do => [:publish_validation, :charge_and_update_credits]
 
-    after_transition :in_progress => :failed, :do => [:publish_fail, :track_sweetch_failed, :alert_sweetch_failed]
+    after_transition :in_progress => :failed, :do => [:publish_fail, :alert_sweetch_failed]
 
-		after_transition :pending => :cancelled, :do => [:delete_scheduled_push, :track_sweetch_cancelled]
+		after_transition :pending => :cancelled, :do => [:delete_scheduled_push]
 
-		after_transition :validated => :contested, :do => [:refund_and_update_credits, :track_sweetch_contested]
+		after_transition :validated => :contested, :do => [:refund_and_update_credits]
 
 
     # Events
@@ -113,18 +113,23 @@ class Sweetch < ActiveRecord::Base
   def publish_match
 		# then trigger match found
     if self.matched_with == self.parker
-      #NotificationHelper.publish_match_parker(self)
+              puts " publish match parker"
+              NotificationHelper.publish_match_parker(self)
     elsif self.matched_with == self.leaver
-      #NotificationHelper.publish_match_leaver(self)
+        puts " publish match leaver"
+        NotificationHelper.publish_match_leaver(self)
+
     end
   end
 
   def publish_validation
+    puts " publish validation"
     #NotificationHelper.publish_validation(self)
   end
 
   def publish_fail
     #NotificationHelper.publish_fail(self)
+    puts " publish fails"
   end
 
 	def schedule_not_found_notification
@@ -134,7 +139,7 @@ class Sweetch < ActiveRecord::Base
 
 	def delete_scheduled_push
 		#NotificationHelper.delete_scheduled_push(self)
-	puts " sched not found"
+	puts " delsched "
 	end
 
   def initial_location
