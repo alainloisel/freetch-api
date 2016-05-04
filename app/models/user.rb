@@ -96,6 +96,9 @@ class User < ActiveRecord::Base
 
   # register the user device token at Urban Airship
   def register_device
+    puts 'registerdevice with UrbanAirship'
+    puts self.device_token
+
     Urbanairship.register_device(self.device_token, :alias => self.email)
   end
 
