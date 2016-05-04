@@ -38,6 +38,12 @@ class Sweetch < ActiveRecord::Base
 		result
 	end
 
+  # Sweetch State Machine
+  # ----------------------------
+  # Reflects the status of the Sweetch during its life, from being requested by a leaver
+  # claimed by another driver, in progress and validated
+  state_machine :state, :initial => :pending do
+
     # Actions triggered by the state transitions
     # Notify leaver with parker info
     after_transition :pending => :in_progress, :do => [:delete_scheduled_push, :publish_match, :track_sweetch_in_progress]
@@ -128,7 +134,7 @@ class Sweetch < ActiveRecord::Base
 
 	def delete_scheduled_push
 		#NotificationHelper.delete_scheduled_push(self)
-	puts " delsched "
+	puts " sched not found"
 	end
 
   def initial_location
