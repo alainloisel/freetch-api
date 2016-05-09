@@ -3,8 +3,8 @@ module Publish
 
   def pubnub
     @pubnub ||= Pubnub.new(
-     :publish_key   => 'pub-c-dd92ddd0-2263-4fbc-839d-8fa215f5a96c',
-     :subscribe_key => 'sub-c-e34dadde-ecd9-11e3-b601-02ee2ddab7fe'
+     :publish_key   => 'pub-c-d60f0690-9e57-44e5-b5d0-a5d18901353b',
+     :subscribe_key => 'sub-c-4ca8cdb4-06c2-11e6-8c3e-0619f8945a4f'
     )
   end
 

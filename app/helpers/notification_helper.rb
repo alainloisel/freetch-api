@@ -122,7 +122,7 @@ module NotificationHelper
     notif[:title] = title
     notif[:device_types] = ["ios"]
 
-    ua = Urbanairship.push(notif)
+    #ua = Urbanairship.push(notif)
     pubnub = Publish.publish("sweetch-#{user.id}", { title: title, data: message[:data].merge(options)}) unless schedule_for
     [ua, pubnub]
   end

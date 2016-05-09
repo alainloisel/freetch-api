@@ -99,7 +99,7 @@ class User < ActiveRecord::Base
     puts 'registerdevice with UrbanAirship'
     puts self.device_token
 
-    Urbanairship.register_device(self.device_token, :alias => self.email)
+    #Urbanairship.register_device(self.device_token, :alias => self.email)
   end
 
   def amount_to_charge
