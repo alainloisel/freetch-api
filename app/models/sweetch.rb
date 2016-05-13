@@ -46,17 +46,17 @@ class Sweetch < ActiveRecord::Base
 
     # Actions triggered by the state transitions
     # Notify leaver with parker info
-    after_transition :pending => :in_progress, :do => [:delete_scheduled_push, :publish_match, :track_sweetch_in_progress]
-
+    after_transition :pending => :in_progress, :do => [:delete_scheduled_push, :publish_match]
+#:track_sweetch_in_progress
     # Notify parker that Sweetch has been validated
-    after_transition :in_progress => :validated, :do => [:publish_validation, :charge_and_update_credits, :track_sweetch_validated]
-
-    after_transition :in_progress => :failed, :do => [:publish_fail, :track_sweetch_failed, :alert_sweetch_failed]
-
-		after_transition :pending => :cancelled, :do => [:delete_scheduled_push, :track_sweetch_cancelled]
-
-		after_transition :validated => :contested, :do => [:refund_and_update_credits, :track_sweetch_contested]
-
+    after_transition :in_progress => :validated, :do => [:publish_validation, :charge_and_update_credits]
+#, :track_sweetch_validated
+    after_transition :in_progress => :failed, :do => [:publish_fail, :alert_sweetch_failed]
+#:track_sweetch_failed
+		after_transition :pending => :cancelled, :do => [:delete_scheduled_push]
+#:track_sweetch_cancelled
+		after_transition :validated => :contested, :do => [:refund_and_update_credits]
+#:track_sweetch_contested
 
     # Events
     event :start do
