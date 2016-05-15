@@ -67,7 +67,7 @@ module NotificationHelper
     message = {}
     message[:aps] = aps
     message[:data] = data
-
+    puts "publish validation"
     publish(sweetch.parker, "Sweetch Validated", message, {})
   end
 
