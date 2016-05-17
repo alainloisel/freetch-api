@@ -49,10 +49,10 @@ module NotificationHelper
     message[:data] = data
 
     response = publish(user, "Match Not Found", message, {}, 305.seconds.from_now)
-
-    if response.has_key?("scheduled_notifications")
-      push_id = response["scheduled_notifications"].first.split("/").last
-      sweetch.update_column(:scheduled_push_id, push_id)
+    puts response
+#    if response.has_key?("scheduled_notifications")
+ #     push_id = response["scheduled_notifications"].first.split("/").last
+  #    sweetch.update_column(:scheduled_push_id, push_id)
     end
   end
 
@@ -130,8 +130,7 @@ module NotificationHelper
     puts message
     pubnub = Publish.publish("sweetch-#{user.id}", { title: title, data: message[:data].merge(options)}) unless schedule_for
     puts "publish end " 
-    [pubnub]
-    
     #ua,
+    [pubnub]
   end
 end
