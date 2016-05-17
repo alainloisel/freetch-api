@@ -98,7 +98,7 @@ module NotificationHelper
   # Tell UA to delete the scheduled push notification for match not found
   def self.delete_scheduled_push(sweetch)
     push_id = sweetch.scheduled_push_id
-    Urbanairship.delete_scheduled_push(push_id) if push_id
+    #Urbanairship.delete_scheduled_push(push_id) if push_id
   end
 
   # Send to UA the notification to push to iOS device
@@ -108,6 +108,9 @@ module NotificationHelper
   # @param schedule_for: if the notification is scheduled for later
   def self.publish(user, title, message, options, schedule_for = nil)
     device_tokens = []
+    puts "startpublisj"
+    puts user
+    puts schedule_for
     if user.is_a?(User)
       device_tokens << user.device_token
     elsif user.is_a?(Array)
@@ -126,7 +129,9 @@ module NotificationHelper
     puts "publish" 
     puts message
     pubnub = Publish.publish("sweetch-#{user.id}", { title: title, data: message[:data].merge(options)}) unless schedule_for
-    [ pubnub]
+    puts "publish end " 
+    [pubnub]
+    
     #ua,
   end
 end
