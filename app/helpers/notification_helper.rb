@@ -53,7 +53,7 @@ module NotificationHelper
 #    if response.has_key?("scheduled_notifications")
  #     push_id = response["scheduled_notifications"].first.split("/").last
   #    sweetch.update_column(:scheduled_push_id, push_id)
-    end
+  #  end
   end
 
   def self.publish_validation(sweetch)
