@@ -85,7 +85,7 @@ class API::V1::SweetchesController < ApplicationController
     when "validated"
       @sweetch.leaver.count_sweetch += 1
       @sweetch.parker.count_sweetch += 1
-      #@sweetch.validate
+      @sweetch.validate
       @sweetch.leaver.save
       @sweetch.parker.save
     when "failed"

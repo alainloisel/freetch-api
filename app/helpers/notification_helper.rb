@@ -57,6 +57,8 @@ module NotificationHelper
   end
 
   def self.publish_validation(sweetch)
+
+    puts "publish validation"
     # Create alert message
     aps = { :alert => "#{sweetch.leaver.first_name} has confirmed the Sweetch", :sound => "default" }
 
