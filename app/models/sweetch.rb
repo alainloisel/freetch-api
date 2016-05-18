@@ -49,8 +49,8 @@ class Sweetch < ActiveRecord::Base
     after_transition :pending => :in_progress, :do => [:delete_scheduled_push, :publish_match]
 #:track_sweetch_in_progress
     # Notify parker that Sweetch has been validated
-    after_transition :in_progress => :validated, :do => [:publish_validation]
-#, :track_sweetch_validated:, charge_and_update_credits
+    after_transition :in_progress => :validated, :do => [:publish_validation, :charge_and_update_credits]
+#, :track_sweetch_validated
     after_transition :in_progress => :failed, :do => [:publish_fail]
 #:track_sweetch_failed,:alert_sweetch_failed
 		after_transition :pending => :cancelled, :do => [:delete_scheduled_push]
