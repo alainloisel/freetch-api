@@ -131,7 +131,7 @@ module NotificationHelper
     puts "publish" 
     puts message
     pubnub = Publish.publish("sweetch-#{user.id}", { title: title, data: message[:data].merge(options)}) unless schedule_for
-    puts "publish end " 
+    puts "publish end 2" 
     #ua,
     [pubnub]
   end
