@@ -22,7 +22,7 @@ module ParkApp
     config.action_dispatch.default_headers = {
       'Access-Control-Allow-Origin' => '*',
       'Access-Control-Allow-Methods' => 'OPTIONS',
-      # 'Access-Control-Request-Method' => '*',
+     'Access-Control-Request-Method' => '*',
       'Access-Control-Allow-Headers' => '*'
     }
 
