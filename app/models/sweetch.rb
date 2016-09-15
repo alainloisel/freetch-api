@@ -27,6 +27,8 @@ class Sweetch < ActiveRecord::Base
 		result[:parker_id] = self.parker_id if self.parker_id
 
     if self.in_progress?
+      
+      puts "in progress"
       result[:eta] = self.eta
       result[:leaver_facebook_id] = self.leaver.facebook_id
       result[:leaver_ph] = self.leaver.phone

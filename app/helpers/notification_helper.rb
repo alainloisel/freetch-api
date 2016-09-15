@@ -34,7 +34,7 @@ module NotificationHelper
     message = {}
     message[:aps] = aps
     message[:data] = data
-
+    puts "envoie publish "
     publish(sweetch.leaver, "Match Found", message, pubnub)
   end
 
