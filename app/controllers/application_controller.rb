@@ -18,21 +18,37 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-        puts "test" 
+        puts "current_user" 
+        puts params[:auth_token] 
+        puts params[:auth] 
+        puts params[:email]
+        
     if params[:auth_token]
-      @current_user ||= User.find_by(token: params[:auth_token])
+         puts "auth_token " 
+         puts params[:auth_token]
+        @current_user ||= User.find_by(token: params[:auth_token])
+       #  puts "current_user email"
+      #   puts current_user.token
+      #render json: { user: @current_user.as_resource(created: true) }
+        # puts "done"
+
     elsif session[:token]
+             puts "sessiontok" 
+            puts session[:token]
       @current_user ||= User.where(token: session[:token], admin: true).first
+       puts @current_user
     end
   end
 
   def logged_in?
-        puts "test" 
+        puts "test logged_in" 
+        puts current_user
+        
     !current_user.nil?
   end
 
   def logged_in_user
-        puts "test" 
+        puts "test logged_in" 
     unless logged_in?
       head status: 401
     end
