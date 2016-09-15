@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
         puts "test logged_in" 
         puts current_user
         
-    !current_user.nil?
+    current_user.nil?
   end
 
   def logged_in_user
