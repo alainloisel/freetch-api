@@ -46,7 +46,7 @@ class Sweetch < ActiveRecord::Base
 
     # Actions triggered by the state transitions
     # Notify leaver with parker info
-    after_transition :pending => :in_progress, :do => [:delete_scheduled_push, :publish_match]
+    after_transition :pending => :in_progress, :do => [:publish_match]
 #:track_sweetch_in_progress
     # Notify parker that Sweetch has been validated
     after_transition :in_progress => :validated, :do => [:publish_validation, :charge_and_update_credits]
