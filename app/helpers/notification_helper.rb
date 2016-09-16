@@ -129,9 +129,9 @@ module NotificationHelper
 
     #ua = Urbanairship.push(notif)
     puts "publish" 
-    puts  "sweetch-#{user.facebook_id}"
+    puts  "sweetch-#{user.device_token}"
     puts message
-    pubnub = Publish.publish("sweetch-#{user.facebook_id}", { title: title, data: message[:data].merge(options)}) unless schedule_for
+    pubnub = Publish.publish("sweetch-#{user.device_token}", { title: title, data: message[:data].merge(options)}) unless schedule_for
     puts "publish end 2" 
     #ua,
     [pubnub]
